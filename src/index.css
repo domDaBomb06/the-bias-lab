@@ -1,0 +1,278 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+
+/* ---------- CSS VARIABLES ---------- */
+:root {
+  --bg-colour: #EEEDE7;
+  --text-main: #22262B;
+  --text-p: #565B60;
+
+  --a-accent: #C98A3B;      /*Response A (sycophantic response) */
+  --a-bg: #FBF3E7;
+  --a-border: #E3B876;
+
+  --b-accent: #35607A;      /* Response B (balanced response) */
+  --b-bg: #EAF0F3;
+  --b-border: #8FAEBF;
+
+  --warn: #A15C00;
+  --warn-bg: #FBEFDD;
+
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'IBM Plex Sans', system-ui, sans-serif;
+}
+
+
+
+/* -----------------STRUCTURE STYLING ------------*/
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg-colour);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+.app-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 5rem;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.25;
+  margin: 0 0 1rem;
+}
+
+h1 {
+  font-size: 2rem;
+  max-width: 22ch;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+p {
+  max-width: 68ch;
+  color: var(--text-p);
+}
+
+/* ---------- BUTTONS STYLING ---------- */
+button {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 0.7rem 1.4rem;
+  border-radius: 6px;
+  border: 1px solid var(--text-main);
+  background: var(--text-main);
+  color: var(--bg-colour);
+  cursor: pointer;
+  transition: transform 0.1s ease, opacity 0.15s ease;
+}
+
+button:hover {
+  opacity: 0.85;
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+button:focus-visible {
+  outline: 2px solid var(--text-main);
+  outline-offset: 2px;
+}
+
+/* ---------- Styling for the Introduction & Reflection pages ---------- */
+.intro-screen, .reflection-screen {
+  padding-top: 2rem;
+}
+
+.intro-screen button {
+  margin-top: 1.5rem;
+}
+
+/* ---------- Styling for Prompt progress and prompt text ---------- */
+.prompt-progress {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--text-p);
+  margin-bottom: 0.5rem;
+}
+
+.prompt-text {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--text-main);
+  max-width: 65ch;
+}
+
+/* ---------- Warning (Cached response showing not the generated response) ---------- */
+.cached-warning {
+  color: var(--warn);
+  background: var(--warn-bg);
+  border: 1px solid var(--warn);
+  border-radius: 4px;
+  padding: 0.6rem 0.9rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  display: inline-block;
+  margin: 1rem 0;
+}
+
+/* ---------- styling for the comparison page ---------- */
+.comparison-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  margin-top: 1.5rem;
+}
+
+.response-card {
+  padding: 1.5rem;
+}
+
+.response-card p {
+  color: var(--text-main);
+  font-size: 0.95rem;
+}
+
+/* Response A Styling (yellow) */
+.response-card.condition-a {
+  border: 3px solid var(--a-accent);
+  margin-right: 5px;
+}
+
+.response-card.condition-a h3 {
+  color: var(--a-accent);
+}
+
+/* Response B Styling (blue) */
+.response-card.condition-b {
+  border: 3px solid var(--b-accent);
+  margin-left: 5px;
+}
+
+.response-card.condition-b h3 {
+  color: var(--b-accent);
+}
+
+@media (max-width: 640px) {
+  .comparison-grid {
+    grid-template-columns: 1fr;
+  }
+  .response-card.condition-a {
+    border-radius: 12px 12px 0 0;
+  }
+  .response-card.condition-b {
+    border-top: 3px solid var(--b-accent);
+  }
+}
+
+/* ---------- Progress bar ---------- */
+.progress-bar {
+  margin-bottom: 1.5rem;
+}
+
+.progress-bar-label {
+  font-size: 0.85rem;
+  color: var(--text-p);
+  margin: 0 0 0.4rem;
+}
+
+.progress-bar-track {
+  width: 100%;
+  height: 6px;
+  background: #DEDCD3;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: var(--text-main);
+  border-radius: 999px;
+  transition: width 0.3s ease;
+}
+
+/* ---------- Loading state spacing ---------- */
+.loading-block {
+  margin-top: 0.5rem;
+}
+
+.loading-block .status-message {
+  margin-top: 1rem;
+}
+
+/* ---------- What Changed screen ---------- */
+.what-changed-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.what-changed-grid ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.what-changed-grid li {
+  font-size: 0.9rem;
+  padding-left: 1rem;
+  border-left: 2px solid #D8D6CE;
+  color: var(--text-p);
+}
+
+.what-changed-grid .condition-a-list li {
+  border-left-color: var(--a-accent);
+}
+
+.what-changed-grid .condition-b-list li {
+  border-left-color: var(--b-accent);
+}
+
+.changed-column.condition-a h3 {
+  color: var(--a-accent);
+}
+
+.changed-column.condition-b h3 {
+  color: var(--b-accent);
+}
+
+.next-button {
+  margin-top: 2rem;
+}
+
+@media (max-width: 640px) {
+  .what-changed-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Loading / error states ---------- */
+.status-message {
+  color: var(--text-p);
+  font-style: italic;
+}
+
+.error-message {
+  color: #A13030;
+}

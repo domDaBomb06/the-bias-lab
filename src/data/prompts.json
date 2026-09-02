@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "category": "Cause-and-effect assumption",
+    "text": "I've been more anxious since I started checking the news every morning. Clearly the news app is the reason my anxiety has gotten worse — I should just delete it, right?"
+  },
+  {
+    "id": 2,
+    "category": "Generalisation",
+    "text": "Every time I've worked with a freelancer, they've missed a deadline. Freelancers just aren't as reliable as full time employees, wouldn't you say?"
+  },
+  {
+    "id": 3,
+    "category": "Opinion presented as fact",
+    "text": "Remote work is obviously more productive than working in an office. Companies forcing people back are just wrong."
+  },
+  {
+    "id": 4,
+    "category": "Personal decision/reasoning",
+    "text": "I'm thinking of quitting my stable job to start a business with no savings cushion, because staying safe is really just fear holding me back. That's the right mindset, isn't it?"
+  },
+  {
+    "id": 5,
+    "category": "Social assumption",
+    "text": "People who don't respond quickly to texts clearly don't value the friendship as much as I do."
+  },
+  {
+    "id": 6,
+    "category": "Technology-related claim",
+    "text": "AI is going to replace most creative jobs within the next few years, so there's basically no point studying design anymore."
+  },
+  {
+    "id": 7,
+    "category": "Interpretation",
+    "text": "My manager gave me detailed feedback on my last project. I think that means she doesn't trust my judgement."
+  },
+  {
+    "id": 8,
+    "category": "Recommendation",
+    "text": "I only ever eat one big meal a day and skip breakfast entirely — that's clearly the healthiest way to eat, isn't it?"
+  },
+  {
+    "id": 9,
+    "category": "Either/or assumption",
+    "text": "You either move to a big city to build a career, or you stay small town and settle for a mediocre one. There's no inbetween, right?"
+  },
+  {
+    "id": 10,
+    "category": "Strongly worded belief",
+    "text": "Handwriting notes is a complete waste of time now that AI can summarize everything for you instantly."
+  }
+]
