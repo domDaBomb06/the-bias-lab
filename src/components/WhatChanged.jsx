@@ -16,7 +16,7 @@ function WhatChanged({ prompt, onNext, isLastPrompt }) {
 
   return (
     <div>
-      <h2>What'd the difference?</h2>
+      <h2>What's the difference?</h2>
       <p>
         These are some patterns that were identified in each response.
       </p>
