@@ -1,48 +1,48 @@
-import annotations from '../data/annotations.json';
+import { CONDITION_NAMES } from '../conditionNames';
 
+//this component helps to show the user what the difference between the sychophantic and balanced responses. The notes are looked up by CONDITION ("A" or "B") so they always describe the right response.
 
-function WhatChanged({ prompt, onNext, isLastPrompt }) {
-  const tags = annotations[String(prompt.id)];
-
+function WhatChanged({ order, tags }) {
+  
 
   if (!tags) {
     return (
-      <div>
-        <p className="status-message">No annotations found for this prompt yet.</p>
-        <button onClick={onNext}>{isLastPrompt ? 'Finish' : 'Next prompt'}</button>
-      </div>
+        <p className="status-message">
+          No annotations found for this prompt yet.
+        </p>
     );
   }
 
+
   return (
-    <div>
-      <h2>What's the difference?</h2>
-      <p>
-        These are some patterns that were identified in each response.
-      </p>
+    <div className='what-changed'>
+        <h2>What Changed?</h2>
 
-      <div className="what-changed-grid">
-        <div className="changed-column condition-a">
-          <h3>Response A</h3>
-          <ul className="condition-a-list">
-            {tags.A.map((tag) => (
-              <li key={tag}>{tag}</li>
-            ))}
-          </ul>
-        </div>
-        <div className="changed-column condition-b">
-          <h3>Response B</h3>
-          <ul className="condition-b-list">
-            {tags.B.map((tag) => (
-              <li key={tag}>{tag}</li>
-            ))}
-          </ul>
-        </div>
-      </div>
+        <p>
+          These are some patterns that were identified in each response.These notes come from the researcher's coding of each response
+        </p>
 
-      <button onClick={onNext} style={{ marginTop: '1.5rem' }}>
-        {isLastPrompt ? 'Finish' : 'Next prompt'}
-      </button>
+        <div className="what-changed-grid">
+          {order.map((condition, index) => (
+            <div
+              key={condition}
+              className= {`changed-column condition-${condition.toLowerCase}`}
+              >
+
+                <h3>
+                  Response {index + 1} : {CONDITION_NAMES[condition]}
+                </h3>
+
+                <ul className={`condition-${condition.toLowerCase()}-list`}>
+                    {tags[condition].map((tag) => (
+                      <li key={tag}>{tag} </li>
+                    ))}
+                </ul>
+            </div>
+
+          ))}
+
+        </div>
     </div>
   );
 }

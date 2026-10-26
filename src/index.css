@@ -2,34 +2,31 @@
 
 /* ---------- CSS VARIABLES ---------- */
 :root {
-  --bg-colour: #EEEDE7;
-  --text-main: #22262B;
-  --text-p: #565B60;
+  --bg-colour: #F9F4F5;
+  --text-main: #000000;
+  --text-p: ##011627;
 
-  --a-accent: #C98A3B;      /*Response A (sycophantic response) */
-  --a-bg: #FBF3E7;
-  --a-border: #E3B876;
+  --a-accent: #FEE7DD;      /*Response A (sycophantic response) */
+  --a-bg: #681403;
+  --a-border: #000000;
 
-  --b-accent: #35607A;      /* Response B (balanced response) */
-  --b-bg: #EAF0F3;
-  --b-border: #8FAEBF;
+  --b-accent: #FEE7DD;      /* Response B (balanced response) */
+  --b-bg: #0A3F80;
+  --b-border: #000000;
 
-  --warn: #A15C00;
+  --warn: #00ff73;
   --warn-bg: #FBEFDD;
 
-  --font-display: 'Fraunces', Georgia, serif;
-  --font-body: 'IBM Plex Sans', system-ui, sans-serif;
+  --font-display: 'Open Sans', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
 }
 
 
 
 /* -----------------STRUCTURE STYLING ------------*/
-* {
-  box-sizing: border-box;
-}
 
 body {
-  margin: 0;
+  
   background: var(--bg-colour);
   color: var(--text-main);
   font-family: var(--font-body);
@@ -38,8 +35,8 @@ body {
 }
 
 .app-container {
-  max-width: 800px;
-  margin: 0 auto;
+  max-width: 1000px;
+  margin: 0 200px;
   padding: 3rem 1.5rem 5rem;
 }
 
@@ -143,6 +140,8 @@ button:focus-visible {
 
 .response-card {
   padding: 1.5rem;
+  border-radius: 10px;
+  margin: 10px;
 }
 
 .response-card p {
@@ -159,6 +158,9 @@ button:focus-visible {
 .response-card.condition-a h3 {
   color: var(--a-accent);
 }
+.response-card.condition-a P {
+  color: var(--a-accent);
+}
 
 /* Response B Styling (blue) */
 .response-card.condition-b {
@@ -167,6 +169,10 @@ button:focus-visible {
 }
 
 .response-card.condition-b h3 {
+  color: var(--b-accent);
+}
+
+.response-card.condition-b p {
   color: var(--b-accent);
 }
 
@@ -237,16 +243,16 @@ button:focus-visible {
 .what-changed-grid li {
   font-size: 0.9rem;
   padding-left: 1rem;
-  border-left: 2px solid #D8D6CE;
+  border-left: 4px solid #D8D6CE;
   color: var(--text-p);
 }
 
 .what-changed-grid .condition-a-list li {
-  border-left-color: var(--a-accent);
+  border-left-color: var(--a-bg);
 }
 
 .what-changed-grid .condition-b-list li {
-  border-left-color: var(--b-accent);
+  border-left-color: var(--b-bg);
 }
 
 .changed-column.condition-a h3 {

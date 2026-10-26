@@ -1,68 +1,71 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Introduction from './components/Introduction';
-import ResponseComparison from './components/ResponseComparison';
-import WhatChanged from './components/WhatChanged';
+import GuessRound from './components/GuessRound';
 import Reflection from './components/Reflection';
 import ProgressBar from './components/ProgressBar';
 import prompts from './data/prompts.json';
-
-
+import scored from './data/scoredResponses.json';
 
 function App() {
-  const [screen, setScreen] = useState('intro');
+  const [screen, setScreen] = useState('intro'); //intro then round then outro
   const [promptIndex, setPromptIndex] = useState(0);
 
-
-  function handleStart() {
-    setScreen('compare');
-  }
-
-
-  function handleShowWhatChanged() {
-    setScreen('whatChanged');
-  }
-
-
-  function handleNext() {
-    if (promptIndex < prompts.length - 1) {
-      setPromptIndex(promptIndex + 1);
-      setScreen('compare');
-    } else {
-      setScreen('reflection');
-    }
-  }
+  // Keeps track of how many guesses were correct.
+  const [correctCount, setCorrectCount] = useState(0);
 
   const isLastPrompt = promptIndex === prompts.length - 1;
 
-    const showProgress = screen === 'compare' || screen === 'whatChanged';
+    useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [screen, promptIndex]) //this makes sure that it scrolls back to the top every time you press a button to the next 'page' 
+
+  function handleGuess(wasCorrect) {
+    if (wasCorrect) setCorrectCount((count) => count + 1);
+  }
+
+  function handleNext() {
+    if (isLastPrompt) {
+      setScreen('outro');
+    } else {
+      setPromptIndex(promptIndex + 1);
+    }
+  }
+
+  const { model, temperature, lastGeneratedAt } = scored.meta;
+  const generatedOn = new Date(lastGeneratedAt).toLocaleDateString('en-ZA', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
 
   return (
     <div className="app-container">
-      {showProgress && (
+      {screen === 'round' && (
         <ProgressBar current={promptIndex + 1} total={prompts.length} />
       )}
 
-      {screen === 'intro' && <Introduction onStart={handleStart} />}
+      {screen === 'intro' && <Introduction onStart={() => setScreen('round')} />}
 
-      {screen === 'compare' && (
-        <ResponseComparison
+      {screen === 'round' && (
+        <GuessRound
           key={prompts[promptIndex].id}
           prompt={prompts[promptIndex]}
-          onShowWhatChanged={handleShowWhatChanged}
-        />
-      )}
-
-      {screen === 'whatChanged' && (
-        <WhatChanged
-          prompt={prompts[promptIndex]}
+          onGuess={handleGuess}
           onNext={handleNext}
           isLastPrompt={isLastPrompt}
         />
       )}
 
-      {screen === 'reflection' && <Reflection />}
+      {screen === 'outro' && (
+        <Reflection correctCount={correctCount} total={prompts.length} />
+      )}
+
+      <footer className="app-footer">
+        The scored responses were generated on {generatedOn} with {model} at
+        temperature {temperature}.
+      </footer>
     </div>
   );
 }
- 
+
 export default App;

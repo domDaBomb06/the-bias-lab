@@ -1,0 +1,138 @@
+/* THIS IS THE STYLING FOR THE GUESS AND REVEAL FLOW
+
+
+
+/*Before the guess (i want them to look neautral so it doesnt give away the answer*/
+.response-card.neutral {
+    background: var(--bg-colour);
+}
+
+.response-card.neutral h3 {
+    color: var(--text-main);
+}
+.response-card.neutral p {
+    color: var(--text-main);
+}
+
+/*after the guess*/
+.condition-label {
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 10px;
+}
+.response-card.condition-a {
+  background-color: var(--a-bg);
+}
+
+.response-card.condition-a .condition-label {
+    color: var(--a-accent);
+  
+}
+
+.response-card.condition-b {
+  background-color: var(--b-bg);
+}
+
+.response-card.condition-b .condition-label {
+    color: var(--b-accent);
+}
+
+.response-card.condition-a h3,
+.changed-column.condition-a h3 {
+  color: var(--a-accent);
+}
+
+/* Guess */
+.guess-question {
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.guess-buttons {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+
+/*key terms*/ 
+.key-terms {
+    margin: 2rem 0;
+}
+
+.key-terms h2 {
+    font-size: 18px;
+}
+
+.key-details {
+    border-top: 1px solid;
+}
+
+.key-terms summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+ 
+.key-terms summary:focus-visible,
+.fresh-controls select:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+ 
+.key-terms details p {
+  margin: 0.5rem 0 0;
+}
+
+
+/* Reflective Questions */
+.reflective-questions li {
+  color: var(--ink-soft);
+  max-width: 68ch;
+}
+
+/*fresh brand new responses*/
+fresh-responses {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid #D8D6CE;
+}
+ 
+.fresh-controls {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 1rem 0;
+}
+ 
+.fresh-controls select {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid var(--ink);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--ink);
+}
+
+.unscored-badge {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ink);
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  padding: 0.1rem 0.7rem;
+}
+ 
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/*footer*/
+.app-footer {
+  margin-top: 4rem;
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+}
